@@ -12,8 +12,9 @@ class Event < ApplicationRecord
 	#Validation de la durée d'un évenement : présence obligatoire et le nombre de minutes doit être un multiple de 5, et est strictement positif
 	validates :duration,
     presence: true,
-    numericality: { greater_than: 0, only_integer: true }
-    #il faut préciser que cet integer doit être un multiple de 5.
+    numericality: {only_integer: true },
+    if: :validate_duration
+    
 
     #Validation des titres dont le présence est obligatoire et qui doivent faire au moins 5 caractères et maxi 140 caractères
     validates :title,
@@ -35,5 +36,13 @@ class Event < ApplicationRecord
     validates :location,
     presence: true
 
+    private
 
+    def validate_duration
+        if duration > 0 && duration % 5 == 0
+          return true
+        else 
+          errors.add("duration not valid please retry")
+        end
+    end
 end
