@@ -76,3 +76,5 @@ gem 'dotenv-rails'
 
 #Permet d'afficher la DB dans le terminal
 gem 'rails_db', '2.0.4'
+
+gem 'activerecord-reset-pk-sequence'

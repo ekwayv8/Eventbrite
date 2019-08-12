@@ -6,10 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require 'activerecord-reset-pk-sequence'
 
 User.destroy_all
 Event.destroy_all
 Attendance.destroy_all
+
+#Permet de remettre à 0 les id des différents objets
+User.reset_pk_sequence
+Event.reset_pk_sequence
+Attendance.reset_pk_sequence
 
 10.times do
 	first_name = Faker::Name.first_name 
