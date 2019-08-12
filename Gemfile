@@ -68,9 +68,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Permet de créer des fakes user et autres pour les tests
 gem 'faker'
+#permet de visualiser le tableau avec sqllite
+gem 'table_print'
 
 #permet de gérer mes api key
 gem 'dotenv-rails'
 
 #Permet d'afficher la DB dans le terminal
-gem 'rails_db'
+gem 'rails_db', '2.0.4'
