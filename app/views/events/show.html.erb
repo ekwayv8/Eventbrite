@@ -1,34 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @event.start_date %>
-</p>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @event.duration %>
-</p>
+<!DOCTYPE html>
+<html>
+<div class="jumbotron jumbotron-fluid" style="background-color:#cae3ed">
+  <div class="container">
+    <p id="notice"><%= notice %></p>
+    <h1 class="display-5 text-center" style="color:#37444a" > <strong>Event title: </strong><%= @event.title %></h1><br>
+    <p class="text-center">
+  
+  <strong>Duration: </strong><%= @event.duration %> minutes<br><br>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+  <strong>Price: </strong><%= @event.price %> €<br><br>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+  <strong>Location: </strong><%= @event.location %><br><br>
 
-<p>
-  <strong>Price:</strong>
-  <%= @event.price %>
-</p>
+   <strong>Start date: </strong><%= @event.start_date %><br><br>
 
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
+  <strong>Description: </strong><%= @event.description %><br><br><br>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+
+  <a href=><button class='btn btn-outline-primary' ><%= link_to 'Edit', edit_event_path(@event) %></button></a>
+  <a href=><button class='btn btn-success' ><%= link_to 'Back', events_path %></button></a>
+    </p>
+    </div>
+    <br/><br/><br/>
+</div>
+
+  
+</html>

@@ -1,6 +1,19 @@
-<h1>Editing Event</h1>
+<!DOCTYPE html>
+<html>
+<div class="jumbotron jumbotron-fluid" style="background-color:#cae3ed">
+  <div class="container">
+    <p id="notice"><%= notice %></p>
+    <h1 class="display-5 text-center" style="color:#37444a" > ⌨️ Editing Event ⌨️</h1><br>
+    <p class="text-center">
+  <%= render 'form', event: @event %><br>
 
-<%= render 'form', event: @event %>
+<p class="text-center">
+ <a href=><button class='btn btn-outline-primary' ><%= link_to 'Show', @event %></button></a>
+ <a href=><button class='btn btn-success' ><%= link_to 'Back', events_path %></button></a>
+    </p>
+    </div>
+</div>
+<br/>
+  
+</html>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>

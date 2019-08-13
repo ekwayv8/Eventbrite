@@ -11,13 +11,13 @@
     </div>
     <% end %>
 
-    <h1 class="display-5 text-center" style="color:#37444a" >BIENVENUE à toi!!!!</h1>
+    <h1 class="display-5 text-center" style="color:#37444a" >BIENVENUE à toi!!!!</h1><br>
     <p class="text-center">Tu trouveras ci-dessous la liste de tous les Events que nous avons en base à ce jour<br><br>
     
    Tu as également la possiblité de créer un nouveau Event<br>
    <!-- Permet d'ajouter la nouvelle fonctionnalité liée à la création de nouvel evenement-->
       <br><br><a href=<%= new_event_path %>>
-      <button class='btn btn-primary '>New Event</button>
+      <button class='btn btn-primary '>Create an Event</button>
     </a>
     </p>
   </div>
@@ -25,15 +25,17 @@
 
 </div>
 
+<h1 class="display-5 text-center" style="color:#37444a">List of Events</h1><br>
+<p id="notice"><%= notice %></p>
 <% @events.each do |event| %>
   <div class="card-deck" style="margin-left: 15px; margin-right: 15px">
   <div class="card" style="width: 18rem; background-color:#cae3ed">
-    <div class="card-body">
+    <div class="card-body text-center">
       <h5 class="card-title">Titre: "<%= event.title %>"</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Durée <%= event.duration %> min</h6>
-      <h6 class="card-subtitle mb-2 text-muted">Prix <%= event.price %> €</h6>
-      <h6 class="card-subtitle mb-2 text-muted">Lieu: <%= event.location %> €</h6>
-      <a href=<%= link_to 'Show', event %>><button class='btn btn-primary'>See more:</button></a>
+      <h6 class="card-subtitle mb-2 text-muted">Durée: <%= event.duration %> min</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Prix: <%= event.price %> €</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Lieu: <%= event.location %> </h6>
+      <a href=><button class='btn btn-outline-primary' ><%= link_to 'Show', event %></button></a>
     </div>
     </div>
   </div>
@@ -44,19 +46,19 @@
 
 
 
-<p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
 
-<table>
+
+<div class="table-responsive-sm">
+<table  class="table table-hover table-dark text-center">
   <thead>
-    <tr>
-      <th>Start date</th>
-      <th>Duration</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Location</th>
+    <tr class="text-center bg-info">
+      <th scope="col">Start date</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th >Location</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -65,10 +67,10 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.start_date %></td>
-        <td><%= event.duration %></td>
+        <td><%= event.duration %> min</td>
         <td><%= event.title %></td>
         <td><%= event.description %></td>
-        <td><%= event.price %></td>
+        <td><%= event.price %> €</td>
         <td><%= event.location %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
@@ -77,7 +79,7 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 
