@@ -11,7 +11,7 @@
     </div>
     <% end %>
 
-    <h1 class="display-5 text-center" style="color:#37444a" >BIENVENUE à toi!!!!</h1><br>
+    <h1 class="display-5 text-center" style="color:#37444a" >🧑🏼 BIENVENUE à toi!!!! 👨🏻</h1><br>
     <p class="text-center">Tu trouveras ci-dessous la liste de tous les Events que nous avons en base à ce jour<br><br>
     
    Tu as également la possiblité de créer un nouveau Event<br>
@@ -42,44 +42,4 @@
 <br/>
 <% end %>
 </html>
-
-
-
-
-
-
-
-<div class="table-responsive-sm">
-<table  class="table table-hover table-dark text-center">
-  <thead>
-    <tr class="text-center bg-info">
-      <th scope="col">Start date</th>
-      <th scope="col">Duration</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
-      <th >Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.start_date %></td>
-        <td><%= event.duration %> min</td>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.price %> €</td>
-        <td><%= event.location %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-<br>
-
 
