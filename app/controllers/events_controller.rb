@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :only_your_events, only: [:edit]
 
   # GET /events
   # GET /events.json
@@ -71,4 +73,15 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location)
     end
+
+    #Permet de restreindre l'édition des event uniquement aux adminsitrateurs de ces derniers
+    def only_your_events
+      @event_admin = Event.find(params[:id]).admin
+    
+      if current_user != @event_admin
+        redirect_to events_path, notice: "Access denied! You can only edit your own events."
+      end
+    end
+
+
 end

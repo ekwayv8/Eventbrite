@@ -1,29 +1,41 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+      <div class="jumbotron jumbotron-fluid" style="background-color:#cae3ed">
+        <div class="container">
+          <p id="notice"><%= notice %></p>
+          <h1 class="display-5 text-center" style="color:#37444a" ><%= @user.first_name %> <%= @user.last_name %> </h1><br>
+          <p class="text-center">
+        
+        <strong>Email: </strong><%= @user.email %><br><br>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+        <strong>Description: </strong><%= @user.description %><br><br>
 
-<p>
-  <strong>Encrypted password:</strong>
-  <%= @user.encrypted_password %>
-</p>
+        <a href=><button class='btn btn-outline-primary' ><%= link_to 'Edit', edit_user_path(@user) %></button></a>
+        <a href=><button class='btn btn-success' ><%= link_to 'Back', users_path %></button></a>
+          </p>
+          </div>
+          <br/><br/><br/>
+      </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @user.description %>
-</p>
+<h3 class="display-5 text-center" style="color:#37444a ">Voici la liste des Events postés par <%= @user.first_name %></h3><br>
+<% @user.events.each do |event| %>
+<div class="list-group" style="margin-left: 15px; margin-right: 15px" >
+   <a href="<%= event_path(event.id)%>" class="list-group-item list-group-item-action " style="background-color:#cae3ed">
+        <div class="d-flex w-100 justify-content-between">
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+            <h5 class="mb-1"><%= event.title %></h5>
+            <small>Event n°<%= event.id %></small>
+        </div>
+          <p class="mb-1"><%=event.description%></p>
+          <small><%= event.attendances.count %> attendees</small>
+    </a>   
+</div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+  
+<br/>
+<% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+
+
+</html>

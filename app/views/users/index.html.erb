@@ -1,35 +1,38 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
 
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Encrypted password</th>
-      <th>Description</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.encrypted_password %></td>
-        <td><%= user.description %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="jumbotron jumbotron-fluid" style="background-color:#cae3ed">
+  <div class="container">
+    <p id="notice"><%= notice %></p>
+    <!-- Ajout de la fonctionnalité qui permet d'ajouter une alerte au user-->
+  <% if flash[:alert] != nil %>
+    <div class='alert alert-success mt-4'>
+      <%= flash[:alert] %>
+    </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+    <h1 class="display-5 text-center" style="color:#37444a" >🧑🏼 BIENVENUE à toi!!!! 👨🏻</h1><br>
+    <p class="text-center"> Tu trouveras ci-dessous la liste de tous les Users que nous avons en base à ce jour <br><br>
+    </p>
+  </div>
+  </div>
 
-<%= link_to 'New User', new_user_path %>
+</div>
+
+<h1 class="display-5 text-center" style="color:#37444a">List des Users</h1><br>
+<p id="notice"><%= notice %></p>
+<% @users.each do |user| %>
+  <div class="card-deck" style="margin-left: 15px; margin-right: 15px">
+  <div class="card" style="width: 18rem; background-color:#cae3ed">
+    <div class="card-body text-center">
+      <h5 class="card-title"><%=link_to "#{user.first_name} #{user.last_name}", user_path(user.id)%></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%=user.description%></h6>
+
+      <a href=><button class='btn btn-outline-primary' ><%= link_to 'Show', user %></button></a>
+    </div>
+    </div>
+  </div>
+<br/>
+<% end %>
+</html>
+
