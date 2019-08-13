@@ -78,3 +78,5 @@ gem 'dotenv-rails'
 gem 'rails_db', '2.0.4'
 
 gem 'activerecord-reset-pk-sequence'
+
+gem 'devise'
