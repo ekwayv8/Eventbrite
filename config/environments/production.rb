@@ -91,4 +91,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  
+  #Permet de renvoyer l'utilisateur ayant perdu son mdp vers le formulaire pour le modififer
+  config.action_mailer.default_url_options = { :host => 'evenbrite-project.herokuapp.com' }
 end
