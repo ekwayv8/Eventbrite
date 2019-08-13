@@ -1,13 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eventbrite</title>
+    <title>Eventbrite Project</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Bootstrap CSS: Ajout des fichier CDN liés à Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
+  <header>
+   <!-- Ajout d'une NavBar bootstrap-->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <%= link_to 'Eventbrite Project', events_path, class: "navbar-brand" %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+          <%= link_to 'Home', events_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+          <%= link_to 'New Event', new_event_path, class: "nav-link" %> 
+          </li>
+       
+
+        <ul class="navbar-nav my-2 my-lg-0">
+      
+
+          <li class="nav-item">
+          <%=link_to 'Login', '#', class: "btn btn-outline-primary mr-2" %>
+          </li>
+          <%= link_to 'SignUp', '#', class: "btn btn-outline-primary" %>
+          </li>
+
+          <li class="nav-item ">
+          <%= link_to 'My Profile', '#', class: "nav-link btn mr-1" %>
+          </li>
+          <li class="nav-item ">
+          <%= link_to 'Logout', '#', method: :delete, data: {confirm: 'Êtes-vous sûr de vous déconnecter ?'}, class: "nav-link btn btn-outline-danger" %> 
+          </li>
+     
+        </ul>
+
+          
+      </div>
+
+    </nav>
+  </header>
 
   <body>
     <%= yield %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  get '/', to: 'events#index'
   resources :attendances
   resources :events
   resources :users
