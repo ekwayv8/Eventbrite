@@ -1,3 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<div class="jumbotron jumbotron-fluid" style="background-color:#cae3ed">
+  <div class="container">
+
+    <!-- Ajout de la fonctionnalité qui permet d'ajouter une alerte au user-->
+  <% if flash[:alert] != nil %>
+    <div class='alert alert-success mt-4'>
+      <%= flash[:alert] %>
+    </div>
+    <% end %>
+
+    <h1 class="display-5 text-center" style="color:#37444a" >BIENVENUE à toi!!!!</h1>
+    <p class="text-center">Tu trouveras ci-dessous la liste de tous les Events que nous avons en base à ce jour<br><br>
+    
+   Tu as également la possiblité de créer un nouveau Event<br>
+   <!-- Permet d'ajouter la nouvelle fonctionnalité liée à la création de nouvel evenement-->
+      <br><br><a href=<%= new_event_path %>>
+      <button class='btn btn-primary '>New Event</button>
+    </a>
+    </p>
+  </div>
+  </div>
+
+</div>
+
+<% @events.each do |event| %>
+  <div class="card-deck" style="margin-left: 15px; margin-right: 15px">
+  <div class="card" style="width: 18rem; background-color:#cae3ed">
+    <div class="card-body">
+      <h5 class="card-title">Titre: "<%= event.title %>"</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Durée <%= event.duration %> min</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Prix <%= event.price %> €</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Lieu: <%= event.location %> €</h6>
+      <a href=<%= link_to 'Show', event %>><button class='btn btn-primary'>See more:</button></a>
+    </div>
+    </div>
+  </div>
+<br/>
+<% end %>
+</html>
+
+
+
+
 <p id="notice"><%= notice %></p>
 
 <h1>Events</h1>
@@ -34,4 +80,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+
