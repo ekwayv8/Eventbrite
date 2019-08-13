@@ -21,14 +21,14 @@ Attendance.reset_pk_sequence
 	first_name = Faker::Name.first_name 
 	last_name = Faker::Name.last_name
 	email = "#{first_name}.#{last_name}@yopmail.com"
-	user = User.create!(email: email, encrypted_password: Faker::Internet.password,description: Faker::Movies::StarWars.quote, first_name: first_name, last_name: last_name)
+	user = User.create!(email: email,password: 'azerty', encrypted_password: Faker::Internet.password,description: Faker::Movies::StarWars.quote, first_name: first_name, last_name: last_name)
 end
 
 
 
 10.times do
 	duration = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
-	event = Event.create!(start_date: Faker::Time.forward(days: 20), duration: duration.sample, title: Faker::Book.title, description: Faker::Lorem.words,price: rand(1..1000), location: Faker::Address.city, admin_id: rand(User.all.first.id..User.all.last.id) )
+	event = Event.create!(start_date: Faker::Time.forward(days: 20), duration: duration.sample, title: Faker::Book.title, description:Faker::Hipster.paragraph,price: rand(1..1000), location: Faker::Address.city, admin_id: rand(User.all.first.id..User.all.last.id) )
 end
 
 
