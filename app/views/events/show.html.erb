@@ -14,9 +14,15 @@
 
   <strong>Location: </strong><%= @event.location %><br><br>
 
+  <strong>Créé par: </strong><%= "#{@event.admin.first_name} #{@event.admin.last_name}" %><br><br>
+
    <strong>Start date: </strong><%= @event.start_date %><br><br>
 
+   <strong>Nombre de participants: </strong><%= @event.attendances.count %> participant(s)<br><br>
+
   <strong>Description: </strong><%= @event.description %><br><br><br>
+
+ 
 
 
   <a href=><button class='btn btn-outline-primary' ><%= link_to 'Edit', edit_event_path(@event) %></button></a>
