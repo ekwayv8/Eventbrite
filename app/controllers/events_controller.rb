@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+     @event = Event.find(params[:id])
   end
 
   # POST /events
@@ -63,6 +64,7 @@ class EventsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -82,6 +84,10 @@ class EventsController < ApplicationController
         redirect_to events_path, notice: "Access denied! You can only edit your own events."
       end
     end
+
+    def already_attend?
+    @event.users.include?(current_user) ? true : false
+    end 
 
 
 end

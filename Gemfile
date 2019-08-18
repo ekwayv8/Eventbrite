@@ -39,6 +39,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  #permet de gérer mes api key
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -71,12 +73,16 @@ gem 'faker'
 #permet de visualiser le tableau avec sqllite
 gem 'table_print'
 
-#permet de gérer mes api key
-gem 'dotenv-rails'
+#Permet de gérer les paiements facilement
+gem 'stripe'
 
 #Permet d'afficher la DB dans le terminal
 gem 'rails_db', '2.0.4'
 
 gem 'activerecord-reset-pk-sequence'
 
+#Permet de gérer l'authentification des users de manière facile
 gem 'devise'
+
+#Permet d'obtenir des logo stylés
+gem 'font-awesome-rails'

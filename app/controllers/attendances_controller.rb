@@ -24,17 +24,44 @@ class AttendancesController < ApplicationController
   # POST /attendances
   # POST /attendances.json
   def create
-    @attendance = Attendance.new(attendance_params)
 
-    respond_to do |format|
-      if @attendance.save
-        format.html { redirect_to @attendance, notice: 'Attendance was successfully created.' }
-        format.json { render :show, status: :created, location: @attendance }
-      else
-        format.html { render :new }
-        format.json { render json: @attendance.errors, status: :unprocessable_entity }
-      end
-    end
+    event = Event.find(params[:event_id])
+    @attendance = Attendance.new(event: event, user: current_user, stripe_customer_id: params[:stripeEmail])
+   
+   if event.admin == current_user
+     flash[:danger] = 'You can\'t registrate yourself for this event'
+      redirect_to event_path(event.id)
+      return
+   end
+
+         # Amount in cents
+   
+       @amount = event.price*100
+
+       customer = Stripe::Customer.create({
+                                            email: params[:stripeEmail],
+                                            source: params[:stripeToken],
+       })
+
+       charge = Stripe::Charge.create({
+                                        customer: customer.id,
+                                        amount: @amount,
+                                        description: 'Rails Stripe customer',
+                                        currency: 'eur',
+       })
+  
+    if @attendance.save
+         flash[:success] = 'You registrated for this event!'
+      elsif event.users.include?(current_user)
+        flash[:danger] = 'You\' already registrated yourself for this event'
+     else
+         flash[:danger] = 'There was a problem during the registration process'
+     end
+     redirect_to event_path(event.id)
+   rescue Stripe::CardError => e
+     flash[:error] = e.message
+     redirect_to event_path(event.id)
+
   end
 
   # PATCH/PUT /attendances/1
@@ -67,8 +94,4 @@ class AttendancesController < ApplicationController
       @attendance = Attendance.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def attendance_params
-      params.require(:attendance).permit(:stripe_customer_id)
-    end
 end
